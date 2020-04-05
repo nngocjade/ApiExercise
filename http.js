@@ -1,6 +1,8 @@
 // Create click listener for get joke button
 
-document.addEventListener("click", getChuckNorrisJoke);
+document
+  .getElementById("get-joke")
+  .addEventListener("click", getChuckNorrisJoke);
 
 // Get info from https://api.chucknorris.io/ and put it on page
 
@@ -16,7 +18,20 @@ function getChuckNorrisJoke() {
 
 // Create click listener for get design quote button
 
+document
+  .getElementById("get-design-quote")
+  .addEventListener("click", getQuotesOnDesign);
 // Get info from https://quotesondesign.com/api/ and get it on page
+
+function getQuotesOnDesign() {
+  fetch("https://quotesondesign.com/wp-json/wp/v2/posts/?orderby=rand")
+    .then((response) => response.json())
+    .then((dataArr) => {
+      console.log(dataArr);
+      let qDWrapper = document.getElementById("random-design-quote");
+      qDWrapper.innerHTML = `<p>${dataArr[0].content.rendered}<p>`;
+    });
+}
 
 // Create Click listener for get number fact button
 
