@@ -28,14 +28,22 @@ function getQuotesOnDesign() {
     .then((response) => response.json())
     .then((dataArr) => {
       console.log(dataArr);
+      let randomNumber = Math.floor(Math.random() * 10);
+      console.log(randomNumber);
       let qDWrapper = document.getElementById("random-design-quote");
-      qDWrapper.innerHTML = `<p>${dataArr[0].content.rendered}<p>`;
+      qDWrapper.innerHTML = `<p>${dataArr[randomNumber].content.rendered}<p>`;
     });
 }
 
 // Create Click listener for get number fact button
-
+document
+  .getElementById("get-number-fact")
+  .addEventListener("click", getNumberFact);
 // Get info from http://numbersapi.com/ and get on page
+function getNumberFact() {
+  let randomNumber = Math.floor(Math.random() * 101);
+  fetch(`http://numbersapi.com/${randomNumber}`);
+}
 
 // Create Click listener for cocktail button
 
