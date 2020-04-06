@@ -42,7 +42,18 @@ document
 // Get info from http://numbersapi.com/ and get on page
 function getNumberFact() {
   let randomNumber = Math.floor(Math.random() * 101);
-  fetch(`http://numbersapi.com/${randomNumber}`);
+  document.getElementById("number").innerHTML = randomNumber;
+  fetch(`http://numbersapi.com/${randomNumber}`, {
+    headers: {
+      "Content-type": "application/json",
+      Accept: "application/json",
+    },
+  })
+    .then((response) => {
+      console.log(response);
+      response.json();
+    })
+    .then((dataObj) => console.log(dataObj));
 }
 
 // Create Click listener for cocktail button
