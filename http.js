@@ -84,23 +84,17 @@ function getCockTail() {
 document
   .getElementById("get-kitty-image")
   .addEventListener("click", getKittyImage);
-//Paypal button
+
 function getKittyImage() {
-  let randomNumber = Math.floor(Math.random() * 201);
-  let randomNumber1 = Math.floor(Math.random() * 201);
-  fetch(`https://community-placekitten.p.rapidapi.com/200/300`, {
-    headers: {
-      "x-rapidapi-host": "community-placekitten.p.rapidapi.com",
-      "x-rapidapi-key": "45722b91cbmsh3720772e66d4286p134884jsndc3bec7a1a80",
-    },
-  })
-    .then((response) => {
-      console.log(response);
-      return response.json();
-    })
-    .then((dataObj) => {
-      console.log(dataObj);
-      let kittyImage = document.getElementById("kitty-image");
-      kittyImage.innerHTML = URL.createObjectURL(kittyImage);
-    });
+  let randomNumber = Math.floor(Math.random() * 400);
+  let randomNumber1 = Math.floor(Math.random() * 400);
+  let kittyWrap = document.getElementById("kitty-section");
+  let kittyImage = document.createElement("img");
+  kittyImage.setAttribute(
+    "src",
+    `http://placekitten.com/g/${randomNumber}/${randomNumber1}`
+  );
+  kittyImage.setAttribute("alt", "kitty-image");
+  kittyWrap.appendChild(kittyImage);
+  document.getElementById("img").innerHTML = "";
 }
