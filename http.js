@@ -85,6 +85,8 @@ document
   .getElementById("get-kitty-image")
   .addEventListener("click", getKittyImage);
 
+document.getElementById("img").innerHTML = "";
+
 function getKittyImage() {
   let randomNumber = Math.floor(Math.random() * 400);
   let randomNumber1 = Math.floor(Math.random() * 400);
@@ -96,5 +98,4 @@ function getKittyImage() {
   );
   kittyImage.setAttribute("alt", "kitty-image");
   kittyWrap.appendChild(kittyImage);
-  document.getElementById("img").innerHTML = "";
 }
