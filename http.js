@@ -40,6 +40,7 @@ document
   .getElementById("get-number-fact")
   .addEventListener("click", getNumberFact);
 // Get info from http://numbersapi.com/ and get on page
+
 function getNumberFact() {
   let randomNumber = Math.floor(Math.random() * 101);
   document.getElementById("number").innerHTML = randomNumber;
@@ -51,13 +52,31 @@ function getNumberFact() {
   })
     .then((response) => {
       console.log(response);
-      response.json();
+      return response.json();
     })
-    .then((dataObj) => console.log(dataObj));
+    .then((dataObj) => {
+      console.log(dataObj);
+      let numberFact = document.getElementById("number-fact");
+      numberFact.innerHTML = dataObj.text;
+    });
 }
 
 // Create Click listener for cocktail button
+document.getElementById("get-cocktail").addEventListener("click", getCockTail);
 
 // Get info from https://www.thecocktaildb.com/api.php?ref=apilist.fun
+
+function getCockTail() {
+  fetch("https://www.thecocktaildb.com/api/json/v1/1/random.php")
+    .then((response) => {
+      console.log(response);
+      return response.json();
+    })
+    .then((dataObj) => {
+      console.log(dataObj);
+      let cTWraper = document.getElementById("cocktail");
+      cTWraper.innerHTML = `<p>${dataObj.drinks[0].strDrink}<p>`;
+    });
+}
 
 // Find a random API from https://apilist.fun/ and get some info onto the screen!
