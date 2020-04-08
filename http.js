@@ -85,17 +85,17 @@ document
   .getElementById("get-kitty-image")
   .addEventListener("click", getKittyImage);
 
-document.getElementById("img").innerHTML = "";
-
 function getKittyImage() {
-  let randomNumber = Math.floor(Math.random() * 400);
-  let randomNumber1 = Math.floor(Math.random() * 400);
-  let kittyWrap = document.getElementById("kitty-section");
+  document.getElementById("img-wrapper-id").innerHTML = "";
+  let randomNumber = Math.ceil(Math.random() * 4) * 100;
+  let randomNumber1 = Math.ceil(Math.random() * 4) * 100;
+  let kittyWrap = document.getElementById("img-wrapper-id");
   let kittyImage = document.createElement("img");
   kittyImage.setAttribute(
     "src",
     `http://placekitten.com/g/${randomNumber}/${randomNumber1}`
   );
   kittyImage.setAttribute("alt", "kitty-image");
+  kittyImage.setAttribute("id", "img-id");
   kittyWrap.appendChild(kittyImage);
 }
